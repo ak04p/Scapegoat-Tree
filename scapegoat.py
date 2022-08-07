@@ -103,7 +103,7 @@ class Scapegoat_tree:
         depth_of_node = self.find_depth(new_node)
         if depth_of_node > self.log32(self.max_size):
             scapegoat_node = new_node.parent
-            while 3*self.size_of_node(scapegoat_node) <= 2*self.size_of_node(scapegoat_node.parent):
+            while self.size_of_node(scapegoat_node) <= self.alpha*self.size_of_node(scapegoat_node.parent):
                 scapegoat_node = scapegoat_node.parent
             self.rebuild_tree(scapegoat_node.parent)
 
